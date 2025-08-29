@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sair do site</title>
+</head>
+<style>
+    
+
+    button {
+      position: relative;
+      
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffec85, #ff8a00 60%, #bf360c 100%);
+      width: 8px;
+      height: 8px;
+      pointer-events: none;
+      opacity: 1;
+      transform: translate(0,0) scale(1);
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      55% { transform: translate(var(--x), var(--y)) scale(1.5); opacity: 0.9; }
+      100% { transform: translate(calc(var(--x)*1.2), calc(var(--y)*1.2)) scale(0.8); opacity: 0; filter: blur(1px);}
+    }
+</style>
+<body>
+    <div class="box">
+        <p>Você realmente quer sair?</p>              <!-- Texto a ser adicionado -->
+        <div class="buttons-container">
+            <button id="voltar">
+                <a  href="index.html">Voltar</a>    <!-- Link para outra pagina -->
+            </button>
+            <button id="yes">Sim</button>
+        </div>
+    </div>
+    <a class="sair-site" href="index5.html"></a>
+
+    <script>
+
+const button = document.getElementById("yes");
+
+button.addEventListener("mouseover", () => {
+  // Pega posição do botão na tela
+  const rect = button.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const particles = [];
+  const particleCount = 12;
+
+  for(let i=0; i<particleCount; i++){
+    const particle = document.createElement("span");
+    particle.className = "particle";
+
+    const angle = (i / particleCount) * Math.PI * 2;
+    const distance = 50 + Math.random() * 50;
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance;
+
+    particle.style.setProperty("--x", `${x}px`);
+    particle.style.setProperty("--y", `${y}px`);
+    particle.style.left = `${centerX}px`;
+    particle.style.top = `${centerY}px`;
+
+    document.body.appendChild(particle); // adiciona fora do botão
+    particles.push(particle);
+  }
+
+  button.style.transition = "scale 0.2s ease-out";
+  button.style.scale = 0
+
+  // Remove partículas após animação
+  setTimeout(() => {
+    particles.forEach(p => p.remove());
+  }, 1000);
+});
+    </script>
+</body>
+</html>

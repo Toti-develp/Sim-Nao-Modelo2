@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Sair do site</title>
+</head>
+<body>
+    <div class="box">
+        <p>Confirmar Saida?</p>              <!-- Texto a ser adicionado -->
+        <div class="buttons-container">
+            <button id="voltar">
+                <a  href="index.html">Voltar</a>    <!-- Link para outra pagina -->
+            </button>
+            <button id='sim-index3'>Sim</button>
+        </div>
+    </div>
+    <a class="sair-site" href="index4.html">Realmente Sair</a>
+<script>
+
+let button = document.getElementById('sim-index3')
+    button.addEventListener('mouseover', function ( ) {
+    button.style.scale = 0;
+    button.style.transition = 2 + "s";
+    button.style.position = "absolute";
+});
+</script>
+</body>
+</html>
