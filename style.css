@@ -33,7 +33,7 @@ a {
     height: 250px;
     width: 350px;
     border-radius: 10px;
-    background: rgb(0, 0, 139);
+    background: purple;
     flex-direction: column;
     display: flex;
     align-items: center;
